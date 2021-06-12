@@ -1,0 +1,1 @@
+start_page = 'http://the-internet.herokuapp.com/'

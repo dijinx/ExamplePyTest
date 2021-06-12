@@ -6,14 +6,11 @@ from Config.config import TestData
 
 
 @pytest.fixture(params=['chrome'], scope='class')
-def init_driver(request):
+def driver(request):
     if request.param == 'chrome':
-        # сюда можно вложить переменную с путём до драйвера  к эксекьютбл пат
         driver = webdriver.Chrome(executable_path=TestData.CHROME_EXECUTABLE_PATH)
-    if request.param == 'firefox':
-        # сюда можно вложить переменную с путём до драйвера
+    elif request.param == 'firefox':
         driver = webdriver.Firefox()
-    request.cls.driver = driver
     driver.implicitly_wait(10)
     yield
     time.sleep(5)
